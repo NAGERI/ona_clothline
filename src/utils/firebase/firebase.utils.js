@@ -1,10 +1,12 @@
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
-  signInWithRedirect,
   signInWithPopup,
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
+
+import { getDoc, setDoc, doc, getFirestore } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyAXwjcF7CyG7dUxrAEDWjQDrQQvyjF8_uY",
   authDomain: "ona-clothing.firebaseapp.com",
@@ -16,10 +18,48 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 
-const provider = new GoogleAuthProvider();
-provider.setCustomParameters({
+const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({
   prompt: "select_account",
 });
 
 export const auth = getAuth();
-export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+export const signInWithGooglePopup = () =>
+  signInWithPopup(auth, googleProvider);
+export const signInWithGoogleRedirect = () =>
+  signInWithGoogleRedirect(auth, googleProvider);
+export const db = getFirestore();
+
+export const createUserDocumentFromAuth = async (
+  userAuth,
+  additionalInformation = "Cedrock"
+) => {
+  if (!userAuth) return;
+
+  const userDocRef = doc(db, "users", userAuth.uid);
+  const userSnapshot = await getDoc(userDocRef);
+
+  if (!userSnapshot.exists()) {
+    const { displayName, email } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      await setDoc(userDocRef, {
+        displayName,
+        email,
+        createdAt,
+        ...additionalInformation,
+      });
+    } catch (error) {
+      console.log("Error creating User", error.message);
+    }
+  }
+  return userDocRef;
+};
+
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+
+  const res = await createUserWithEmailAndPassword(auth, email, password);
+  return res;
+};
