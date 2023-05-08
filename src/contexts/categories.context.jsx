@@ -1,3 +1,5 @@
+/** 
+ * No longer needed
 import { createContext, useState, useEffect } from "react";
 
 // import SHOP_DATA from "../shop-data.js";
@@ -27,3 +29,4 @@ export const CategoriesProvider = ({ children }) => {
     </CategoriesContext.Provider>
   );
 };
+*/
