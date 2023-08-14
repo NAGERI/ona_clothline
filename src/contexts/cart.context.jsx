@@ -1,3 +1,4 @@
+/**
 import { createContext, useReducer } from "react";
 import { createAction } from "../utils/reducer/reducer.utils";
 const addCartItem = (cartItems, productToAdd) => {
@@ -61,7 +62,7 @@ const INITIAL_STATE = {
 
 const cartReducer = (state, action) => {
   const { type, payload } = action;
-  /** What do we need to return as the updated state */
+  /** What do we need to return as the updated state /
   switch (type) {
     case CART_ACTION_TYPES.SET_CART_ITEMS:
       return {
@@ -110,7 +111,7 @@ export const CartProvider = ({ children }) => {
      *  newCartTotal,
      *  newCartCount
      * }
-     */
+     *
   };
   const addItemsToCart = (productToAdd) => {
     const newCartItems = addCartItem(cartItems, productToAdd);
@@ -142,3 +143,4 @@ export const CartProvider = ({ children }) => {
     <CartContext.Provider value={value_res}>{children}</CartContext.Provider>
   );
 };
+**/

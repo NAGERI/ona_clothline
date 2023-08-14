@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProductCard from "../../components/product-card/product-card.component";
-import { selectorCategories } from "../../store/categories/category.selector";
+import { selectorCategoriesMap } from "../../store/categories/category.selector";
 
 import { CategoryContainer, CategoryTitle } from "./category.styles.jsx";
 import { useSelector } from "react-redux";
@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 const Category = () => {
   const { category } = useParams();
   // const { categoriesMap } = useContext(CategoriesContext); // the objects are from firestore
-  const categoriesMap = useSelector(selectorCategories);
+  const categoriesMap = useSelector(selectorCategoriesMap);
   const [products, setProducts] = useState(categoriesMap[category]);
 
   useEffect(() => {
