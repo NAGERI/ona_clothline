@@ -18,3 +18,8 @@ export const selectorCategoriesMap = createSelector(
     }, {})
 );
 // Data transformation
+
+export const selectorCategoriesIsLoading = createSelector(
+  [selectorCategoriesReducer],
+  (categoriesSlice) => categoriesSlice.isLoading
+);
