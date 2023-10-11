@@ -10,19 +10,21 @@ import {
   createUserDocumentFromAuth,
   onAuthStateChangedListner,
 } from "./utils/firebase/firebase.utils";
-import { setCurrentUser } from "./store/user/user.action";
+import { setCurrentUser } from "./store/user/user.reducer";
 import { useDispatch } from "react-redux";
 
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     /**This is run whenever you initialize a listner. */
-    const unsubscribe = onAuthStateChangedListner(async (user) => {
-      console.log(user);
+    const unsubscribe = onAuthStateChangedListner((user) => {
       if (user) {
-        await createUserDocumentFromAuth(user);
+        createUserDocumentFromAuth(user);
       }
-      dispatch(setCurrentUser(user));
+      const pickedUser =
+        user && (({ accessToken, email }) => ({ accessToken, email }))(user);
+      console.log(pickedUser);
+      dispatch(setCurrentUser(pickedUser));
     });
     return unsubscribe;
   }, []);

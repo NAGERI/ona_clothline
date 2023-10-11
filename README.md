@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# e-Clothing
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is an E-commerce web application that enables customers buy clothing online, you are a click away.
+
+## Link to Site
+
+The demo is hosted using [Netlify](https://app.netlify.com/) on this domain [e-Clothing](https://ona-clothing.netlify.app/)
 
 ## Available Scripts
 
@@ -13,11 +17,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
