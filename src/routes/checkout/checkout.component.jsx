@@ -1,4 +1,5 @@
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
+import PaymentForm from "../../components/payment-form/payment-form-components";
 import {
   selectCartItems,
   selectCartTotal,
@@ -34,6 +35,7 @@ const Checkout = () => {
         <CheckoutItem key={item.id} cartItem={item} />
       ))}
       <div className="total">Total &nbsp; ${cartTotal}</div>
+      <PaymentForm />
     </div>
   );
 };
