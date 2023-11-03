@@ -18,6 +18,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+Install [netlify](https://app.netlify.com/), to use the serverless payment function
+Run `netlify dev`, the local server will run on port 8888.
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
@@ -27,6 +30,8 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+This project was build with CI/CD and deployed on [Netlify](https://app.netlify.com/) platform.
 
 ### `npm run eject`
 
